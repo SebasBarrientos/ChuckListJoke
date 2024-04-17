@@ -31,15 +31,22 @@ const printJoke = () => {
   let numbBtn = 0;
   //   console.log(jokes);
   jokes.forEach((joke) => {
+    const divCard = document.createElement("div");
+    const divCardBody = document.createElement("div");
     const button = document.createElement("button");
     const text = document.createElement("p");
+    divCard.classList.add("card", "mt-2")
+    divCardBody.classList.add("card-body", "d-flex", "flex-column", "justify-content-center", "align-items-center")
+    text.classList.add("card-title")
     text.innerText = joke;
     button.innerText = "Delete";
     button.classList.add("btn", "btn-danger", "m-1");
     button.id = joke;
-    divJokes.appendChild(text);
-    //divJokes.innerHTML += `<p>${joke}</p>`;
-    divJokes.appendChild(button);
+    divJokes.appendChild(divCard)
+    divCard.appendChild(divCardBody);
+    divCardBody.appendChild(text);
+    //divCardBody.innerHTML += `<p>${joke}</p>`;
+    divCardBody.appendChild(button);
     // document.getElementById(`Btn${numbBtn}`).appendChild(button);
     button.addEventListener("click", () => {
       deleteJoke(button.id);
